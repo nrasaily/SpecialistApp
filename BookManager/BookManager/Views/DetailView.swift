@@ -8,29 +8,71 @@
 import SwiftUI
 
 struct DetailView: View {
+    
+    @Binding var book: Book
+    
+    @State private var showEditSheet: Bool = false
+    
     var body: some View {
         ScrollView {
-            VStack (alignment: .center, spacing: 20){
+            VStack (alignment: .leading, spacing: 20){
                 HStack{
-                    Image("lotr_king")
+                    // Colescing operator (?? ) if left side is nil do the right sside
+                    Image(book.image ?? "default_book")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 150)
                         .padding(.vertical, 20)
                     VStack{
-                        Text("Title is really long and should wrap")
+                        Text(book.title)
                             .font(.system(size: 36, weight: .bold, design: .serif))
-                        Text("by \("Author")")
-                            .font(.headline)
-                            .foregroundStyle(.secondary)
+                        if(book.author != ""){
+                            Text("by \(book.author)")
+                                .font(.headline)
+                                .foregroundStyle(.secondary)
+                            Text("Genre: \(book.genre.rawValue)")
+                                .font(.headline)
+                                .foregroundStyle(.secondary)
+                        }
+                    
                             
                     }
                     
                 }
-                Text("The Fellowship of the Ring by J.R.R. Tolkien is the first volume of The Lord of the Rings trilogy. It follows the journey of Frodo Baggins, a humble hobbit who inherits a powerful and dangerous ring from his uncle Bilbo. When Gandalf the wizard reveals that the ring belongs to the Dark Lord Sauron, Frodo sets out on a perilous quest to destroy it in the fires of Mount Doom. Along the way, he is joined by a fellowship of companions, each with their own reasons for seeking the ring's destruction. ")
+                HStack{
                     
+                    
+                    CustomCapsule(book.readingStatus.rawValue)
+                    Spacer()
+                    //Text(book.description != "" ? book.description : "No description")
+                    FavoriteToggle(isFavorite: $book.isFavorite)
+                }
+                    
+                Text(book.description != "" ? book.description : "No description")
+                    // Ternary operator (? :) if logical check is true, do after"?" else do after the ""
+                // logical operator
+                if(book.review != "" || book.rating > 0){
+                    Text("My Review").font(.subheadline)
+                    if(book.rating > 0){
+                        CustomCapsule("Rating: \(book.rating) \(book.rating > 1 ? "stars" : "star")")
+                    }
+                    Text(book.review != "" ? book.review : "No review yet")
+                }
             }
             .padding(.horizontal, 16)
         }
+        .navigationTitle(book.title ?? "Book") // sets title
+        .navigationBarTitleDisplayMode(.inline) // Changes the title to be smallar
+        .navigationBarItems(trailing: Button("Edit", action: {showEditSheet.toggle()})) /// sets button on the top right corner with the text edit
+        .sheet(
+            isPresented: $showEditSheet,
+            content: {
+                AddEditBookView(book: $book)
+            }
+        )// Show sheet whenever $showEdsitSheet is true
+       
     }
 }
+//#Preview {
+//    DetailView(book: $book)
+//}

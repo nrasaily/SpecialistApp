@@ -1,8 +1,8 @@
 //
 //  Genre.swift
-//  BookManager
+//  MovieManager
 //
-//  Created by Nar Rasaily on 10/25/25.
+//  Created by Nar Rasaily on 10/26/25.
 //
 
 import Foundation

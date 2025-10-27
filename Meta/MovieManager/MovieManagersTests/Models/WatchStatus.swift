@@ -1,9 +1,10 @@
 //
-//  ReadingStatus.swift
-//  BookManager
+//  WatchStatus.swift
+//  MovieManager
 //
-//  Created by Nar Rasaily on 10/24/25.
+//  Created by Nar Rasaily on 10/26/25.
 //
+
 enum ReadingStatus: String, CaseIterable {
     case planToRead = "Plan to Read"
     case reading = "Reading"
