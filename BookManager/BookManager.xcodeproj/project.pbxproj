@@ -29,6 +29,23 @@
 		6A6972902EA0738B003A27FA /* BookManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6ACACCCF2EB070D000E488C8 /* Exceptions for "BookManagerTests" folder in "BookManager" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				BookCard.swift,
+			);
+			target = 6A6972762EA07389003A27FA /* BookManager */;
+		};
+		6ACACCD02EB070D000E488C8 /* Exceptions for "BookManagerTests" folder in "BookManagerTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				BookCard.swift,
+			);
+			target = 6A6972852EA0738B003A27FA /* BookManagerTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6A6972792EA07389003A27FA /* BookManager */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -37,6 +54,10 @@
 		};
 		6A6972892EA0738B003A27FA /* BookManagerTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6ACACCCF2EB070D000E488C8 /* Exceptions for "BookManagerTests" folder in "BookManager" target */,
+				6ACACCD02EB070D000E488C8 /* Exceptions for "BookManagerTests" folder in "BookManagerTests" target */,
+			);
 			path = BookManagerTests;
 			sourceTree = "<group>";
 		};
