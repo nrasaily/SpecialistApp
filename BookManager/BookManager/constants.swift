@@ -1,0 +1,18 @@
+//
+//  constants.swift
+//  BookManager
+//
+//  Created by Nar Rasaily on 11/3/25.
+//
+
+//
+// 
+//
+import SwiftUICore
+
+let SETTINGS_THEME_KEY = "SETTINGS_THEME_KEY"
+let SETTINGS_ACCENT_COLOR_KEY = "SETTINGS_ACCENT_COLOR_KEY"
+let SETTINGS_THEME_DEFAULT_VALUE = Theme.light
+let SETTINGS_ACCENT_COLOR_DEFAULT_VALUE = Color.blue
+let SETTINGS_GRID_COLUMNS_KEY = "SETTINGS_GRID_COLUMNS_KEY"
+let SETTINGS_GRID_COLUMNS_DEFAULT_VALUE = 2

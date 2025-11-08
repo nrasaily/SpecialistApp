@@ -17,19 +17,13 @@ struct FavoritesView: View {
     ]
     
     // Computed variables
-    private var favoritesBooks: [Binding<Book>] {
-        $books.filter {
-            $0.wrappedValue.isFavorite
-            && (
-                selectedGenre == nil
-                || $0.wrappedValue.genre == selectedGenre
-            )
-            && (
-                selectedReadingStatus == nil
-                || $0.wrappedValue.readingStatus == selectedReadingStatus
-            )
+    private var favoriteBooks: [Binding<Book>] {
+        filterFavorityBooks(
+            books: $books,
+            selectedGenre: selectedGenre,
+            selectedStatus: selectedReadingStatus
             
-        }
+        )
     }
         
     var body: some View {
@@ -49,7 +43,7 @@ struct FavoritesView: View {
                 }.padding()
             }
             ScrollView{
-                if (favoritesBooks.isEmpty){
+                if (favoriteBooks.isEmpty){
                     VStack{
                         Image(systemName: "book.fill")
                             .font(.largeTitle)
@@ -60,7 +54,7 @@ struct FavoritesView: View {
                     }.padding()
                 }else {
                     LazyVGrid(columns: gridLayout) {
-                        ForEach(favoritesBooks, id:\.id){ book in
+                        ForEach(favoriteBooks, id:\.id){ book in
                             // Text(book.wrappedValue.title)
                             
                             NavigationLink(destination: DetailView(book: book)) {
@@ -94,3 +88,22 @@ struct FavoritesView: View {
 }
     
 
+func filterFavorityBooks(
+    books: Binding<[Book]>,
+    selectedGenre: Genre?,
+selectedStatus: ReadingStatus?,
+    isNegative: Bool? = false
+    
+) -> [Binding<Book>]{
+    books.filter {
+        $0.wrappedValue.isFavorite
+        && (
+            selectedGenre == nil
+            || $0.wrappedValue.genre == selectedGenre
+        )
+        && (
+            selectedStatus == nil
+            || $0.wrappedValue.readingStatus == selectedStatus
+        )
+    }
+}

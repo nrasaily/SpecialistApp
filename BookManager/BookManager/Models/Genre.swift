@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Genre: String, CaseIterable {
+enum Genre: String, CaseIterable, Codable {
     case fiction
     case nonFiction
     case selfHelp
@@ -18,4 +18,5 @@ enum Genre: String, CaseIterable {
     case horror
     case biography
     case unknown
+
 }

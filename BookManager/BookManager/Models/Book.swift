@@ -14,7 +14,8 @@ struct Book: Identifiable{
     var description: String = ""// it could be Nil because it ends with question mark ?
     var rating: Int = 0
     var review: String = ""
-    var isFavorite: Bool = false
+   // var isFavorite: Bool = false
     var readingStatus: ReadingStatus = .unknown
     var genre: Genre = .unknown
+    var isFavorite: Bool = false
 }
